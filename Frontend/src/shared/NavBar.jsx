@@ -28,7 +28,7 @@ export function NavBar() {
         <Link to='/leaderboard'>
           <span className='icon'>📊</span> Leaderboards
         </Link>
-        <Link to='/ast.html'>
+        <Link to='/ast'>
           {' '}
           <span className='icon'>⭐</span> All Star Team{' '}
         </Link>

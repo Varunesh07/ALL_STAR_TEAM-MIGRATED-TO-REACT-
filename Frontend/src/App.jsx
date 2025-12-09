@@ -3,6 +3,7 @@ import { HomePage } from './pages/HomePage'
 import { TeamPage } from './pages/TeamPage'
 import { PlayerPage } from './pages/PlayerPage'
 import { LeaderBoard } from './pages/LeaderBoard'
+import { AllStarTeam } from './pages/AllStarTeam'
 import './App.css'
 
 function App() {
@@ -10,8 +11,9 @@ function App() {
     <Routes>
       <Route index element={<HomePage />} />
       <Route path='teams' element={<TeamPage />} />
-      <Route path='players' element={<PlayerPage />}></Route>
-      <Route path='leaderboard' element={<LeaderBoard />}></Route>
+      <Route path='players' element={<PlayerPage />} />
+      <Route path='leaderboard' element={<LeaderBoard />} />
+      <Route path='ast' element={<AllStarTeam />} />
     </Routes>
   )
 }

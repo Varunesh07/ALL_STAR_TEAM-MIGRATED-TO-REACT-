@@ -1,126 +1,125 @@
+import { useEffect, useState } from 'react'
+import { getTeamAbbreviation } from '../utils/teamAbbreviation'
+import { NavBar } from '../shared/NavBar'
 import './LeaderBoard.css'
+
 export function LeaderBoard() {
+  const [orangeCap, setOrangeCap] = useState([])
+  const [purpleCap, setPurpleCap] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:3000/players/orangeCap')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) setOrangeCap(data.data)
+      })
+      .catch((err) => console.error('Orange Cap fetch error:', err))
+  }, [])
+
+  // 🟣 Fetch Purple Cap (Wickets)
+  useEffect(() => {
+    fetch('http://localhost:3000/players/purpleCap')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) setPurpleCap(data.data)
+      })
+      .catch((err) => console.error('Purple Cap fetch error:', err))
+  }, [])
+  const maxRuns = orangeCap[0]?.RunsScored || 1
+  const maxWickets = purpleCap[0]?.WicketsTaken || 1
+
   return (
-    <div className='leaderboard-container'>
-      <div className='cap-section'>
-        <h2 className='cap-title orange'>
-          🟠 Orange Cap <span>Top Run Scorers</span>
-        </h2>
+    <>
+      <NavBar />
+      <div className='leaderboard-container'>
+        <div className='cap-section'>
+          <h2 className='cap-title orange'>
+            🟠 Orange Cap <span>Top Run Scorers</span>
+          </h2>
 
-        <div className='cap-list'>
-          <div className='cap-card'>
-            <div className='rank'>1</div>
-            <div className='player-info'>
-              <div className='player-icon rcb'>RC</div>
-              <div>
-                <h3 className='player-name'>Virat Kohli</h3>
-                <span className='team-name'>RCB</span>
-              </div>
-            </div>
+          <div className='cap-list'>
+            {orangeCap.map((player, pos) => {
+              const percent = (player.RunsScored / maxRuns) * 100
 
-            <div className='score orange'>741</div>
+              return (
+                <div className='cap-card' key={player.PID}>
+                  <div className='rank'>{pos + 1}</div>
 
-            <div className='progress-bar orange-bar'>
-              <div className='progress-fill' style={{ width: '100%' }}></div>
-            </div>
+                  <div className='player-info'>
+                    <div
+                      className={`player-icon ${getTeamAbbreviation(
+                        player.TeamName
+                      ).toLowerCase()}`}
+                    >
+                      {getTeamAbbreviation(player.TeamName)}
+                    </div>
 
-            <div className='stats-row'>
-              <span>
-                Avg: <b>61.8</b>
-              </span>
-              <span>
-                SR: <b>154.7</b>
-              </span>
-            </div>
+                    <div>
+                      <h3 className='player-name'>{player.PName}</h3>
+                      <span className='team-name'>
+                        {getTeamAbbreviation(player.TeamName)}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className='score orange'>{player.RunsScored}</div>
+
+                  <div className='progress-bar orange-bar'>
+                    <div
+                      className='progress-fill'
+                      style={{ width: `${percent}%` }}
+                    ></div>
+                  </div>
+                </div>
+              )
+            })}
           </div>
+        </div>
 
-          <div className='cap-card'>
-            <div className='rank'>2</div>
-            <div className='player-info'>
-              <div className='player-icon csk'>CS</div>
-              <div>
-                <h3 className='player-name'>Ruturaj Gaikwad</h3>
-                <span className='team-name'>CSK</span>
-              </div>
-            </div>
+        <div className='cap-section'>
+          <h2 className='cap-title purple'>
+            🟣 Purple Cap <span>Top Wicket Takers</span>
+          </h2>
 
-            <div className='score orange'>583</div>
+          <div className='cap-list'>
+            {purpleCap.map((player, pos) => {
+              const percent = (player.WicketsTaken / maxWickets) * 100
 
-            <div className='progress-bar orange-bar'>
-              <div className='progress-fill' style={{ width: '78%' }}></div>
-            </div>
+              return (
+                <div className='cap-card' key={player.PID}>
+                  <div className='rank purple'>{pos + 1}</div>
 
-            <div className='stats-row'>
-              <span>
-                Avg: <b>53.0</b>
-              </span>
-              <span>
-                SR: <b>141.2</b>
-              </span>
-            </div>
+                  <div className='player-info'>
+                    <div
+                      className={`player-icon ${getTeamAbbreviation(
+                        player.TeamName
+                      ).toLowerCase()}`}
+                    >
+                      {getTeamAbbreviation(player.TeamName)}
+                    </div>
+
+                    <div>
+                      <h3 className='player-name'>{player.PName}</h3>
+                      <span className='team-name'>
+                        {getTeamAbbreviation(player.TeamName)}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className='score purple'>{player.WicketsTaken}</div>
+
+                  <div className='progress-bar purple-bar'>
+                    <div
+                      className='progress-fill'
+                      style={{ width: `${percent}%` }}
+                    ></div>
+                  </div>
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>
-
-      <div className='cap-section'>
-        <h2 className='cap-title purple'>
-          🟣 Purple Cap <span>Top Wicket Takers</span>
-        </h2>
-
-        <div className='cap-list'>
-          <div className='cap-card'>
-            <div className='rank'>1</div>
-            <div className='player-info'>
-              <div className='player-icon kkr'>KK</div>
-              <div>
-                <h3 className='player-name'>Varun Chakravarthy</h3>
-                <span className='team-name'>KKR</span>
-              </div>
-            </div>
-
-            <div className='score purple'>21</div>
-
-            <div className='progress-bar purple-bar'>
-              <div className='progress-fill' style={{ width: '100%' }}></div>
-            </div>
-
-            <div className='stats-row'>
-              <span>
-                Avg: <b>16.8</b>
-              </span>
-              <span>
-                Econ: <b>7.4</b>
-              </span>
-            </div>
-          </div>
-
-          <div className='cap-card'>
-            <div className='rank'>2</div>
-            <div className='player-info'>
-              <div className='player-icon mi'>MI</div>
-              <div>
-                <h3 className='player-name'>Jasprit Bumrah</h3>
-                <span className='team-name'>MI</span>
-              </div>
-            </div>
-
-            <div className='score purple'>20</div>
-
-            <div className='progress-bar purple-bar'>
-              <div className='progress-fill' style={{ width: '95%' }}></div>
-            </div>
-
-            <div className='stats-row'>
-              <span>
-                Avg: <b>14.2</b>
-              </span>
-              <span>
-                Econ: <b>6.5</b>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </>
   )
 }

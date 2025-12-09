@@ -51,6 +51,11 @@ body {
   margin-bottom: 18px;
 }
 
+.cap-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
 /* Rank */
 .rank {
   font-size: 20px;
@@ -145,6 +150,10 @@ body {
 
 .purple-bar .progress-fill {
   background: #a952ff;
+}
+
+.purple {
+  color: #a952ff;
 }
 
 /* Stats Row */
