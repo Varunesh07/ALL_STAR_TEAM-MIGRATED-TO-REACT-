@@ -55,20 +55,6 @@ export function PlayerPage() {
                     <h4>{Player.RunsScored}</h4>
                   </div>
 
-                  <div className='action-row'>
-                    <button
-                      href='update.html'
-                      className='action-btn update-btn'
-                    >
-                      <i className='fas fa-edit'></i>
-                    </button>
-                    <button
-                      href='delete.html'
-                      className='action-btn delete-btn'
-                    >
-                      <i className='fas fa-trash'></i>
-                    </button>
-                  </div>
                   <div className='stat-box'>
                     <p>Wickets</p>
                     <h4>{Player.WicketsTaken}</h4>

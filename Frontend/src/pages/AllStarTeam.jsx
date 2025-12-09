@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 import { NavBar } from '../shared/NavBar'
 import { getInitials } from '../utils/getInitials'
 import './AllStarTeam.css'
@@ -9,15 +10,14 @@ export function AllStarTeam() {
   useEffect(() => {
     async function loadTeam() {
       try {
-        const res = await fetch('http://localhost:3000/allstarteam')
-        const data = await res.json()
+        const res = await axios.get('http://localhost:3000/allstarteam')
 
-        if (!data.success) {
+        if (!res.data.success) {
           console.error('Failed to load All-Star Team')
           return
         }
 
-        setTeam(data.data.allStarTeam)
+        setTeam(res.data.data.allStarTeam)
       } catch (err) {
         console.error('Error loading All-Star XI:', err)
       }

@@ -16,7 +16,6 @@ export function HomePage() {
     return new Date(b.MatchDate) - new Date(a.MatchDate)
   })
 
-  // Step 2 → take recent 6
   const recentSix = sorted.slice(0, 6)
 
   function attachTeamNames(matches, teams) {
@@ -38,26 +37,21 @@ export function HomePage() {
     const t1Abbr = getTeamAbbreviation(team1Name)
     const t2Abbr = getTeamAbbreviation(team2Name)
 
-    const target = t1Runs + 1 // team 2 needs this to win
-
-    // --- CASE 1: Team 1 defends successfully (team 2 fails chase)
+    const target = t1Runs + 1
     if (t2Runs < t1Runs) {
       const margin = t1Runs - t2Runs
       return `${t1Abbr} won by ${margin} runs`
     }
 
-    // --- CASE 2: Team 2 chases successfully (team 2 reaches or passes the target)
     if (t2Runs >= target) {
       const wicketsLeft = 10 - t2Wkts
       return `${t2Abbr} won by ${wicketsLeft} wickets`
     }
 
-    // --- CASE 3: Tie game (same runs)
     if (t1Runs === t2Runs) {
       return 'Match tied'
     }
 
-    // fallback (should never happen)
     return 'Result not determined'
   }
 
@@ -73,7 +67,6 @@ export function HomePage() {
         const team1 = t.find((x) => x.TEAMID === m.Team1ID).TEAMNAME
         const team2 = t.find((x) => x.TEAMID === m.Team2ID).TEAMNAME
 
-        // Store everything in React state
         setSelectedMatch({
           ...m,
           Team1Name: team1,

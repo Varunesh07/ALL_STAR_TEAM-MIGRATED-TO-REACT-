@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 import { getTeamAbbreviation } from '../utils/teamAbbreviation'
 import { NavBar } from '../shared/NavBar'
 import './LeaderBoard.css'
@@ -8,23 +9,25 @@ export function LeaderBoard() {
   const [purpleCap, setPurpleCap] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:3000/players/orangeCap')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) setOrangeCap(data.data)
-      })
-      .catch((err) => console.error('Orange Cap fetch error:', err))
+    const loadCaps = async () => {
+      try {
+        const orange = await axios.get(
+          'http://localhost:3000/players/orangeCap'
+        )
+        const purple = await axios.get(
+          'http://localhost:3000/players/purpleCap'
+        )
+
+        if (orange.data.success) setOrangeCap(orange.data.data)
+        if (purple.data.success) setPurpleCap(purple.data.data)
+      } catch (err) {
+        console.error('Cap fetch error:', err)
+      }
+    }
+
+    loadCaps()
   }, [])
 
-  // 🟣 Fetch Purple Cap (Wickets)
-  useEffect(() => {
-    fetch('http://localhost:3000/players/purpleCap')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) setPurpleCap(data.data)
-      })
-      .catch((err) => console.error('Purple Cap fetch error:', err))
-  }, [])
   const maxRuns = orangeCap[0]?.RunsScored || 1
   const maxWickets = purpleCap[0]?.WicketsTaken || 1
 
