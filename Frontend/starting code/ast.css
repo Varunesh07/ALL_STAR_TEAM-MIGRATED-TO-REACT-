@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: #f6f8fc;
+}
+.allstar-container {
+  padding: 20px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+/* 4 cards per row */
+.allstar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+/* Card styling */
+.allstar-card {
+  background: white;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  transition: 0.2s;
+}
+
+.allstar-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.player-top {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.player-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.captain-badge {
+  background: #ff9800;
+  color: white;
+  padding: 3px 7px;
+  border-radius: 6px;
+  margin-left: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.player-name {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.tags {
+  margin-top: 4px;
+}
+
+.role-tag {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  margin-right: 5px;
+  color: white;
+}
+
+.Batsman {
+  background: #2196f3;
+}
+.Bowler {
+  background: #9c27b0;
+}
+.Allrounder {
+  background: #ff9800;
+}
+.Wicketkeeper {
+  background: #4caf50;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.stat-box p {
+  font-size: 14px;
+  color: #777;
+}
+
+.stat-box h4 {
+  font-size: 20px;
+  margin-top: 5px;
+}

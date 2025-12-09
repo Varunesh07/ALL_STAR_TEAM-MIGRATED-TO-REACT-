@@ -1,0 +1,318 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: #f6f8fc;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  width: 100%;
+  background: #1e3a8a;
+  color: white;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-logo {
+  font-size: 30px;
+}
+
+.nav-title h1 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.nav-title p {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #e5e7eb;
+  font-size: 15px;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.nav-links a.active {
+  background: white;
+  color: #1e3a8a;
+  font-weight: 600;
+}
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+  width: 95%;
+  max-width: 1300px;
+  margin: 30px auto;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+/* ===== PLAYERS GRID ===== */
+/* --- GRID LAYOUT (4 CARDS PER ROW) --- */
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 20px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .players-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .players-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .players-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- CARD --- */
+.player-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.player-card:hover {
+  transform: translateY(-4px);
+}
+
+/* --- TOP SECTION --- */
+.top {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.player-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 18px;
+  color: #fff;
+}
+
+/* Team Color Example */
+
+/* Player name */
+.player-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.team-tag,
+.role-tag {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+/* Team Color Tags */
+
+.csk-tag {
+  background: #ffec8b; /* yellow */
+}
+
+.mi-tag {
+  background: #cce4ff; /* blue */
+}
+
+.lsg-tag {
+  background: #d8f3dc; /* light mint green */
+}
+
+.kkr-tag {
+  background: #e9d8fd; /* light purple */
+}
+
+.rcb-tag {
+  background: #ffe5e5; /* light red */
+}
+
+.gt-tag {
+  background: #e0f2fe; /* light sky blue */
+}
+
+.rr-tag {
+  background: #ffe1f7; /* light pink */
+}
+
+.pk-tag {
+  background: #ffe3e3; /* pastel red */
+}
+
+.dc-tag {
+  background: #dbeafe; /* light blue */
+}
+
+.srh-tag {
+  background: #ffedd5; /* light orange */
+}
+
+/* Role Color Tags */
+.bowler {
+  background: #e6d7ff;
+}
+.batter {
+  background: #ffe0cd;
+}
+.allrounder {
+  background: #d8f5d0;
+}
+
+.wk {
+  background: #cffafe;
+}
+
+/* --- Stats Section --- */
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
+}
+
+.stat-box p {
+  margin: 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.stat-box h4 {
+  margin: 4px 0 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* ===== ACTION BUTTONS ON PLAYER CARD ===== */
+.player-card {
+  position: relative;
+  overflow: visible;
+}
+
+/* Buttons container */
+.action-buttons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: 0.3s ease;
+}
+
+/* Show buttons on hover */
+.player-card:hover .action-buttons {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ACTION BUTTON ROW BELOW STATS */
+.action-row {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+/* Show on hover */
+.player-card:hover .action-row {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Button Styling */
+.action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+  font-size: 15px;
+
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s ease;
+}
+
+.action-btn:hover {
+  transform: scale(1.12);
+}
+
+/* Icon Colors Matching Navbar Feel */
+.view-btn i {
+  color: #2563eb;
+} /* Blue */
+.update-btn i {
+  color: #f59e0b;
+} /* Yellow */
+.delete-btn i {
+  color: #dc2626;
+} /* Red */

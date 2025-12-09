@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="ast.css" />
+  </head>
+  <body>
+    <div class="allstar-container">
+      <h2 class="page-title">🏆 All-Star XI</h2>
+      <p class="subtitle">
+        Best 11 players selected using average evaluation score
+      </p>
+
+      <div id="allstar-team" class="allstar-grid"></div>
+    </div>
+    <script>
+      async function loadAllStarTeam() {
+        try {
+          const res = await fetch('http://localhost:3000/allstarteam')
+          const data = await res.json()
+
+          if (!data.success) {
+            console.error('Failed to load All-Star Team')
+            return
+          }
+
+          const team = data.data.allStarTeam
+          const container = document.getElementById('allstar-team')
+
+          container.innerHTML = '' // Clear previous cards
+
+          team.forEach((player) => {
+            const initials = player.PName.split(' ')
+              .map((word) => word[0])
+              .join('')
+              .substring(0, 2)
+              .toUpperCase()
+
+            const card = `
+        <div class="allstar-card">
+
+          <div class="player-top">
+            <div class="player-icon ${player.Role}">
+              ${initials}
+            </div>
+
+            <div>
+              <h3 class="player-name">
+                ${player.PName}
+                ${
+                  player.isCaptain
+                    ? '<span class="captain-badge">CAPTAIN</span>'
+                    : ''
+                }
+              </h3>
+
+              <div class="tags">
+                <span class="role-tag ${player.Role}">${player.Role}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stats">
+            <div class="stat-box">
+              <p>Runs</p>
+              <h4>${player.RunsScored}</h4>
+            </div>
+
+            <div class="stat-box">
+              <p>Wickets</p>
+              <h4>${player.WicketsTaken}</h4>
+            </div>
+
+            <div class="stat-box">
+              <p>Eval Score</p>
+              <h4>${player.AvgEvalScore}</h4>
+            </div>
+          </div>
+
+        </div>
+      `
+
+            container.innerHTML += card
+          })
+        } catch (err) {
+          console.error('Error loading All-Star XI:', err)
+        }
+      }
+
+      loadAllStarTeam()
+    </script>
+  </body>
+</html>

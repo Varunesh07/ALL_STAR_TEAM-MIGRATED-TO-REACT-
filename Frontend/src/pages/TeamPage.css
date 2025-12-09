@@ -1,0 +1,369 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: #f6f8fc;
+}
+
+/* ===== NAVBAR (same as your design) ===== */
+
+/* .navbar {
+  width: 100%;
+  background: #1e3a8a;
+  color: white;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-logo {
+  font-size: 28px;
+}
+
+.nav-title h1 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.nav-title p {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #e5e7eb;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.nav-links a.active {
+  background: white;
+  color: #1e3a8a;
+  font-weight: 600;
+} */
+
+/* ===== MAIN CONTAINER ===== */
+
+.container {
+  width: 95%;
+  max-width: 1300px;
+  margin: 30px auto;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+/* ===== TEAMS GRID ===== */
+
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.team-card {
+  background: white;
+  border-radius: 14px;
+  padding: 22px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.team-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.team-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+}
+
+.team-short {
+  color: #6b7280;
+  font-size: 14px;
+}
+.team-link {
+  text-decoration: none;
+}
+
+.right {
+  text-align: right;
+}
+
+.win {
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.loss {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.points {
+  margin-top: 6px;
+  color: #1f2937;
+  font-size: 15px;
+}
+
+/* TEAM COLORS */
+
+/* ===== TEAM CARD ACTION ICONS ===== */
+
+.team-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.team-card {
+  position: relative;
+  overflow: visible;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.team-actions {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: 0.3s ease;
+}
+
+/* SHOW ON HOVER (same animation as player-card) */
+.team-card:hover .team-actions {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* DELETE BUTTON */
+.action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  cursor: pointer;
+
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s ease;
+}
+
+/* Hover Grow Animation */
+.action-btn:hover {
+  transform: scale(1.12);
+}
+
+/* Icon Color (Navbar red tone) */
+.delete i {
+  color: #dc2626; /* same as your delete red */
+  font-size: 15px;
+}
+
+.update i {
+  color: #f59e0b;
+  font-size: 15px;
+}
+
+/* CONTAINER */
+.team-table-container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 14px;
+  margin: 30px auto;
+  width: 95%;
+  max-width: 1300px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* HEADER */
+.team-title {
+  margin-bottom: 22px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* TABLE */
+.team-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  font-size: 16px;
+}
+
+.team-table thead tr {
+  background: transparent;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.team-table th {
+  padding: 12px 20px;
+  text-align: left;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+}
+
+/* ROWS */
+.team-table tbody tr {
+  background: #fafafa;
+  border-radius: 10px;
+  transition: 0.25s ease;
+}
+
+.team-table tbody tr:hover {
+  background: #f0f7ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.team-table td {
+  padding: 16px 20px;
+  color: #1f2937;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* Remove top border on first row */
+.team-table tbody tr:first-child td {
+  border-top: none;
+}
+
+/* TAGS */
+.tag {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.batter {
+  background: #fde8d7;
+  color: #d97706;
+}
+
+.allrounder {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.wk {
+  background: #d1fae5;
+  color: #047857;
+}
+
+.bowler {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+
+.headcoach {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.assistantcoach {
+  background: #cffafe;
+  color: #0e7490;
+}
+
+/* ================= TEAM EXTRA STATS ================= */
+
+.team-extra-stats {
+  display: flex;
+  gap: 28px;
+  margin: 28px 0 35px 0;
+}
+
+.stat-box {
+  flex: 1;
+  background: #ffffff;
+  padding: 20px 25px;
+  border-radius: 14px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: 0.25s ease;
+  cursor: default;
+}
+
+.stat-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px #1e3a8a;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.stat-value {
+  margin-top: 6px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+}

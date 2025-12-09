@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Inter Font -->
+
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <!-- ===== NAVBAR ===== -->
+
+    <script>
+      document.querySelectorAll('.match-card').forEach((card) => {
+        card.addEventListener('click', () => {
+          const id = card.dataset.matchid
+
+          fetch(`http://localhost:3000/matches/${id}`)
+            .then((res) => res.json())
+            .then((res) => {
+              const m = res.data.match
+              const t = res.data.teams
+
+              const team1 = t.find((x) => x.TEAMID === m.Team1ID).TEAMNAME
+              const team2 = t.find((x) => x.TEAMID === m.Team2ID).TEAMNAME
+
+              document.getElementById('md-id').textContent = m.MatchID
+              document.getElementById(
+                'md-teams'
+              ).textContent = `${team1} vs ${team2}`
+              document.getElementById('md-venue').textContent = m.Venue
+              document.getElementById('md-date').textContent = new Date(
+                m.MatchDate
+              ).toLocaleDateString()
+              document.getElementById(
+                'md-score'
+              ).textContent = `${m.Team1Score} vs ${m.Team2Score}`
+              document.getElementById('md-mom').textContent = m.PName
+
+              document
+                .getElementById('match-details-box')
+                .classList.remove('hidden')
+            })
+        })
+      })
+    </script>
+  </body>
+</html>

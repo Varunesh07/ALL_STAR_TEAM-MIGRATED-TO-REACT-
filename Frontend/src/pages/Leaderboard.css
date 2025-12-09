@@ -1,0 +1,168 @@
+/* Page container - side-by-side layout */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: #f6f8fc;
+}
+
+.leaderboard-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 25px;
+}
+
+/* Section titles */
+.cap-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cap-title span {
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0.6;
+}
+
+.cap-title.orange {
+  color: #ff7a00;
+}
+
+.cap-title.purple {
+  color: #a952ff;
+}
+
+/* Individual Cards */
+.cap-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  margin-bottom: 18px;
+}
+
+/* Rank */
+.rank {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ff7a00;
+}
+
+/* Player info row */
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 5px;
+}
+
+.player-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.team-name {
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+/* Player Icon */
+.player-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rcb {
+  background: #e63946;
+}
+.csk {
+  background: #ffd500;
+  color: #000;
+}
+.rr {
+  background: #ff4fa6;
+}
+.srh {
+  background: #ff8f1f;
+}
+.mi {
+  background: #004ba0;
+}
+.kkr {
+  background: #3b0163;
+}
+
+/* Score number on right */
+.score {
+  font-size: 26px;
+  font-weight: 700;
+  float: right;
+  margin-top: -45px;
+}
+
+.score.orange {
+  color: #ff7a00;
+}
+.score.purple {
+  color: #a952ff;
+}
+
+/* Progress Bars */
+.progress-bar {
+  width: 100%;
+  background: #f3f3f3;
+  border-radius: 8px;
+  height: 6px;
+  margin-top: 14px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 8px;
+}
+
+.orange-bar .progress-fill {
+  background: #ff7a00;
+}
+
+.purple-bar .progress-fill {
+  background: #a952ff;
+}
+
+/* Stats Row */
+.stats-row {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+.stats-row b {
+  font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .leaderboard-container {
+    grid-template-columns: 1fr;
+  }
+}
