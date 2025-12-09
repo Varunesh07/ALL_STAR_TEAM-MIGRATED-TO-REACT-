@@ -91,27 +91,32 @@ GET /teams/:id
 DELETE /teams/:id  
 PATCH /teams/:id  
 ```
-```
+
 ### Players
+```
 GET /players  
 GET /players/orangeCap  
 GET /players/purpleCap  
 DELETE /players/:id  
 PATCH /players/:id  
 ```
-```
+
 ### Coaches
+```
+
 GET /coaches  
 GET /coaches/:id  
 DELETE /coaches/:id  
 PATCH /coaches/:id  
 ```
-```
+
 ### All-Star Team
+```
 GET /allstarteam
 ```
-```
-### Match Logs
+
+### Match Log
+```s
 GET /matches  
 GET /matches/:id  
 POST /matches  
